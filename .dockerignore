@@ -1,0 +1,49 @@
+# Git 相关
+.git
+.gitattributes
+.gitignore
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# 虚拟环境
+venv/
+.venv/
+env/
+ENV/
+
+# 测试文件
+.pytest_cache/
+*.test.py
+tests/
+
+# IDE 配置
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志文件
+*.log
+logs/
+
+# 临时数据库文件
+*.db
+*.sqlite
+*.sqlite3
+
+# 文档（可选，减小镜像体积）
+# README.md
+
+# 构建产物
+dist/
+build/
+*.egg-info/

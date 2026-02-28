@@ -1,0 +1,10 @@
+quart
+patchright
+rich
+camoufox
+beautifulsoup4
+curl_cffi
+python-dotenv
+setuptools
+# 建议添加以支持异步数据库
+aiosqlite
