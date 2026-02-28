@@ -16,7 +16,7 @@ on:
 env:
   # GitHub Container Registry 镜像名（自动使用当前仓库）
   GHCR_IMAGE: ghcr.io/${{ github.repository_owner }}/turnstile-solver
-  DOCKERHUB_IMAGE: ${{ sgithub.repository_owner }}/turnstile-solver
+  DOCKERHUB_IMAGE: ${{ github.repository_owner }}/turnstile-solver
 
 jobs:
   build-and-push:
