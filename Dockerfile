@@ -1,4 +1,4 @@
-# 使用 Python 3.10 基础镜像（slim 变体）
+# 使用 Python 3.10 基础镜像（slim 变体），支持 amd64 和 arm64
 FROM python:3.10-slim
 
 # 设置环境变量，防止交互式安装提示
@@ -43,7 +43,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 # 预下载 Camoufox 浏览器二进制文件
-# 提前下载避免容器启动时因下载大文件导致超时
+# camoufox fetch 会自动检测当前架构（amd64/arm64）并下载对应版本
 RUN python -m camoufox fetch
 
 # 复制项目源代码（放在依赖安装之后，优化缓存利用）
@@ -57,4 +57,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD curl -f http://localhost:7860/ || exit 1
 
 # 启动命令：使用 camoufox 浏览器，5个并发线程，开启 debug 模式
-CMD ["python", "api_solver.py", "--host", "0.0.0.0", "--port", "7860", "--browser_type", "camoufox", "--thread", "5", "--debug"]
+CMD ["python", "api_solver.py", "--host", "0.0.0.0", "--port", "7860", "--browser_type", "camoufox", "--thread", "2", "--debug"]

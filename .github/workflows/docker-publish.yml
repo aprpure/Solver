@@ -82,12 +82,12 @@ jobs:
             type=sha,prefix=sha-,format=short
             type=raw,value=latest,enable={{is_default_branch}}
 
-      # 7. 构建并推送到两个仓库
+      # 7. 构建并推送到两个仓库（支持 amd64 和 arm64 双架构）
       - name: Build and push to GHCR
         uses: docker/build-push-action@v5
         with:
           context: .
-          platforms: linux/amd64   # 如需 arm64 可改为: linux/amd64,linux/arm64
+          platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta-ghcr.outputs.tags }}
           labels: ${{ steps.meta-ghcr.outputs.labels }}
@@ -99,7 +99,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta-dockerhub.outputs.tags }}
           labels: ${{ steps.meta-dockerhub.outputs.labels }}
